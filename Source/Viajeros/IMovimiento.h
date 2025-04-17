@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
+#include "Viajante.h"
 #include "IMovimiento.generated.h"
 
 // This class does not need to be modified.

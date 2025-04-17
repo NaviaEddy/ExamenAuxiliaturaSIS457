@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Viajante.h"
 #include "EstrategiaMovimientoCircular.h"
+#include "Viajante.h"
 
 // Sets default values
 AEstrategiaMovimientoCircular::AEstrategiaMovimientoCircular()
@@ -15,7 +15,6 @@ AEstrategiaMovimientoCircular::AEstrategiaMovimientoCircular()
 void AEstrategiaMovimientoCircular::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
@@ -23,6 +22,12 @@ void AEstrategiaMovimientoCircular::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AEstrategiaMovimientoCircular::Inicializar(const FVector& InCentro, float InRadio)
+{
+	Centro = InCentro;
+	Radio = InRadio;
 }
 
 void AEstrategiaMovimientoCircular::TipoMovimiento(AViajante* _viajante, float DeltaTime)

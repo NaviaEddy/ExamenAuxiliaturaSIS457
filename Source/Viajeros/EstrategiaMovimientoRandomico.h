@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "IMovimiento.h"
+#include "Viajante.h"
 #include "EstrategiaMovimientoRandomico.generated.h"
 
 UCLASS()
@@ -24,5 +25,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	
-	void TipoMovimiento(class AViajante* _viajante, float DeltaTime) override;
+	void TipoMovimiento(AViajante* _viajante, float DeltaTime) override;
+
+private:
+	float TimerCambioDireccion = 0.0f;
+	float IntervaloTiempoMax = 2.0f;
+	float DireccionActual = 1.0f; 
+	bool UsandoEjeX = true;
 };

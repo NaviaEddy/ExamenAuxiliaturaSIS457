@@ -12,13 +12,18 @@ AViajante::AViajante()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh>
 		Plataforma(TEXT("StaticMesh'/Game/Meshs/EditorCube.EditorCube'"));
 
+	static ConstructorHelpers::FObjectFinder<UMaterialInterface> MatAsset(TEXT("Material'/Game/Materials/MaterialBase.MaterialBase'"));
+	if (MatAsset.Succeeded())
+	{
+		MaterialToApply = MatAsset.Object;
+	}
+
 	PlataformaMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Plataforma_Mesh"));
 	PlataformaMesh->SetRelativeScale3D(FVector(0.1, 0.1, 0.1));
 	PlataformaMesh->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
 	PlataformaMesh->SetStaticMesh(Plataforma.Object);
+	PlataformaMesh->SetMaterial(0, MaterialToApply);
 	SetRootComponent(PlataformaMesh);
-
-	EstrategiasMovimiento = nullptr;
 
 }
 
@@ -39,16 +44,6 @@ void AViajante::AlternarMovimiento(AActor* _movimiento)
 		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("¡Lanzamiento no valido! Consulte Registro de salida para obtener mas detalles.")));
 		UE_LOG(LogTemp, Error, TEXT("AlterarManiobras(): ¡El actor no es una estrategia de EstrategiaNaveDeCombate! ¿Estas seguro de que el actor implementa esa interfaz?"));
 	}
-}
-
-void AViajante::Emplear()
-{
-	if (!EstrategiasMovimiento) {
-		UE_LOG(LogTemp, Error, TEXT("Emplear(): EstrategiaNaveDeCombate es NULL, asegurese de que este inicializada."));
-		return;
-	}
-	//Ejecutar la maniobra de estrategia actual
-	EstrategiasMovimiento->TipoMovimiento();
 }
 
 // Called every frame

@@ -18,21 +18,19 @@ public:
 
 	void AlternarMovimiento(AActor* _movimiento);
 
-	void Emplear();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	IIMovimiento* EstrategiasMovimiento;
+	class IIMovimiento* EstrategiasMovimiento;
 
 	// Static Mesh Component
 	UPROPERTY(VisibleAnywhere)
 	UStaticMeshComponent* PlataformaMesh;
 
 	// Color parameter for the material
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Appearance")
-	FLinearColor MeshColor;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Material")
+	UMaterialInterface* MaterialToApply;
 
 public:	
 	// Called every frame

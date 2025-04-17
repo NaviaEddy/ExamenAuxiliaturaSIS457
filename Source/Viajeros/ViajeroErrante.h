@@ -16,8 +16,4 @@ class VIAJEROS_API AViajeroErrante : public AViajante
 
 public:
 	AViajeroErrante();
-
-	void AlternarManiobras(AActor* _movimiento);
-	void Emplear();
-	
 };

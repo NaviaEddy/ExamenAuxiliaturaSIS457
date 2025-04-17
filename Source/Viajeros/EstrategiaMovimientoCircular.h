@@ -1,10 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
-
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "IMovimiento.h"
+#include "Viajante.h"
 #include "EstrategiaMovimientoCircular.generated.h"
 
 UCLASS()
@@ -30,6 +29,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void TipoMovimiento(class AViajante* _viajante, float DeltaTime) override;
+	void Inicializar(const FVector& InCentro, float InRadio);
+
+	void TipoMovimiento(AViajante* _viajante, float DeltaTime) override;
 
 };
